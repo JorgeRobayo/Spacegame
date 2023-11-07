@@ -1,15 +1,49 @@
+body{
+    background-image: url('space\ pattern.avif');
+}
+
 .title{
     text-align: center;
+    color: aliceblue;
 }
 
 h3{
     text-align: center;
+    color: aliceblue;
+}
+.gameScreen{
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 30px;
+    height: 600px;
+    padding: 1% 5% 1% 5%;
+    outline: solid black;
 }
 
-.batlleScreen{
+.batleScreen{
+    margin-left: 150px;
+    margin-right: 150px;
+    height: 150px;
     text-align: center;
+    background-color: red;
 }
 
-/* button{
+.buttons{
     text-align: center;
-} */
+    padding-bottom: 30px;
+}
+
+.attackBtn{
+    font-size: 30px;
+    padding: 1%;
+    width: 150px;
+}
+.retreatBtn{
+    font-size: 30px;
+    padding: 1%;
+    width: 250px;
+}
+

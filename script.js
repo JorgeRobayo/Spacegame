@@ -119,7 +119,7 @@ class Ships {
             // console.log(`Human hit the alien`)
             // batleScreen.textContent = `Human hit the alien`
 
-            screenBattle(`Human hit the alien`)//print mensages
+            screenBattle(`${this.name} hit the alien`)//print mensages
 
             // console.log(`now alien life is ${alien.hull}`)
 
@@ -152,12 +152,14 @@ class Aliens extends Ships {
             human.hull -= this.firePwr
             // console.log(`you hit the human`)
 
-            // batleScreen.textContent = `Human hit the alien`
+            screenBattle(`alien hit the human, now human life is ${human.hull}`) 
 
-            console.log(`now human life is ${human.hull}`)
+            // console.log(`now human life is ${human.hull}`)
+            // batleScreen.textContent = `now human life is ${human.hull}`
         }
         else {
-            console.log(`Alien missed!`)
+            // console.log(`Alien missed!`)
+            screenBattle(`Alien missed!`)
         }
 
     }
@@ -170,7 +172,9 @@ const batleScreen = document.querySelector('.batleScreen')
 function screenBattle(newtext) { 
     const text = document.createElement('p')
     text.textContent = newtext
-   batleScreen.appendChild(text)
+    // batleScreen.textContent = newtext
+    batleScreen.appendChild (text)
+    
 }
 
 
@@ -264,7 +268,8 @@ let battle = (human, enemy) => {
         currentPlayer.attack(opponent)
         
         if(opponent.hull <= 0){
-             console.log(`${currentPlayer.name} won!`)
+            //  console.log(`${currentPlayer.name} won!`)
+             screenBattle(`${currentPlayer.name} won!`)
             gameOver = true
             break
         }
@@ -274,22 +279,29 @@ let battle = (human, enemy) => {
         
         if (currentPlayer === human) {
             if(opponent.hull <= 0){
-                console.log(`${currentPlayer.name} won!`)
+                // console.log(`${currentPlayer.name} won!`)
+                screenBattle(`${currentPlayer.name} won!`)
                 gameOver = true
                 break
             }
         }
         if (!gameOver) {
-            console.log(`The battle continues`)
+            // console.log(`The battle continues`)
+            screenBattle(`The battle continues`)
         }
     
     }
     count++
     nextTurn()
+    if (count === 6){
+    //    console.log(`battle is finished`)
+       screenBattle(`The battle has finished, please restart!`)
+       }
 }
     
 function retreat(){
-    console.log(`YOU ARE A LOOSER!!!!`)
+    // console.log(`YOU ARE A LOOSER!!!!`)
+    screenBattle(`YOU ARE A LOOSER!!!!`)
     location.reload()
 }
 
@@ -300,6 +312,9 @@ const UssAssembly = new Ships('human1', 20, 5, 0.7)
 const attacktest1 = document.querySelector('.attackBtn')
 attacktest1.addEventListener('click', () =>{
    battle(UssAssembly, alienFleet[count])
+   if (count === 6){
+    attacktest1.setAttribute('disabled', 'true')
+   }
 //    console.log('clicked')
 })
 
